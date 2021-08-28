@@ -1,20 +1,16 @@
 "use strict"
-const arr = [1, 2, "343", [1,2], 4, 4.5, NaN, Number.MAX_SAFE_INTEGER];
+const arr = [1, 2, "343", [1,2], 4, "4.5", -0.5, 4.5, NaN, Number.MAX_SAFE_INTEGER-100, Infinity];
 const solution = function (arr) {
-    function countDigits(n) {
-        for(var i = 0; n > 1; i++) {
-           n /= 10;
-        }
-        return i;
-     }
     let sum = 0;
     for(let i = 0; i < arr.length; i++){
-        if(typeof(arr[i]) === "number" && Number.isFinite(arr[i]) && Number.isFinite(arr[i]) && !Number.isNaN(arr[i]) && countDigits(arr[i]>14)){
-            sum = sum + arr[i];
+        if(typeof(arr[i]) === "number" && Number.isFinite(arr[i]) && !Number.isNaN(arr[i])){
+            let dec = arr[i] - Math.trunc(arr[i]);
+            sum = sum + dec;
         }
         console.log(sum);
     }
     return Number.isInteger(sum);
   };
   console.log(solution(arr));
-  console.log(34345);
+  let k = Infinity;
+  console.log(typeof(k));
